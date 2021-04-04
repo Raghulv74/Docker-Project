@@ -1,8 +1,8 @@
 pipeline {
 
   environment {
-    registry = "10.128.0.6:5000/Raghulv74/flask"
-    registry_mysql = "10.128.0.6:5000/Raghulv74/mysql"
+    registry = "10.128.0.9:5000/mgsgoms/flask"
+    registry_mysql = "10.128.0.9:5000/mgsgoms/mysql"
     dockerImage = ""
   }
 
@@ -11,7 +11,7 @@ pipeline {
   
     stage('Checkout Source') {
       steps {
-        git 'https://github.com/Raghulv74/Docker-Project.git'
+        git 'https://github.com/raghulv74/docker-project.git'
       }
     }
 
@@ -42,8 +42,8 @@ pipeline {
    }
    stage('Build mysql image') {
      steps{
-       sh 'docker build -t "10.128.0.6:5000/Raghulv74/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
-        sh 'docker push "10.128.0.6:5000/Raghulv74/mysql:$BUILD_NUMBER"'
+       sh 'docker build -t "10.128.0.9:5000/mgsgoms/mysql:$BUILD_NUMBER"  "$WORKSPACE"/mysql'
+        sh 'docker push "10.128.0.9:5000/mgsgoms/mysql:$BUILD_NUMBER"'
         }
       }
     stage('Deploy App') {
